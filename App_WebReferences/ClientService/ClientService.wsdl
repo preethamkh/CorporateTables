@@ -1,0 +1,3244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="SaveContact">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="objICD" type="tns:iMISContactDetails" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="iMISContactDetails">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:iMISContact">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="IsMemberTypeReadOnly" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Fax" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="HomePhone" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="InstituteID" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="InstituteName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="InstituteMemberType" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Prefix" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Suffix" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="WorkPhone" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="BillingCategory" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="TollFreePhone" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="CreateNewUser" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="IsInstitute" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="UserInfo" type="tns:iMISUser" />
+              <s:element minOccurs="0" maxOccurs="1" name="SubscriptionInfo" type="tns:iMISSubscriptionInfo" />
+              <s:element minOccurs="0" maxOccurs="1" name="Addresses" type="tns:ArrayOfIMISAddress" />
+              <s:element minOccurs="0" maxOccurs="1" name="CustomFields" type="tns:ArrayOfIMISCustomField" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="iMISContact">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ContactID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MemberType" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="iMISUser">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ContactID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MemberType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsStaff" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExpiresOn" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="SubscriptionInfo" type="tns:iMISSubscriptionInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="iMISSubscriptionInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ContactID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BillToContactID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MembershipType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PaidThru" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="BillBeginDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="BilledDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="NationalOfficeExist" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Subscriptions" type="tns:ArrayOfIMISSubscription" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfIMISSubscription">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="iMISSubscription" nillable="true" type="tns:iMISSubscription" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="iMISSubscription">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProductCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NetPrice" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BillBeginDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="BillThruDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="SellOnWeb" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsMembershipPayment" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsResearchPayment" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfIMISAddress">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="iMISAddress" nillable="true" type="tns:iMISAddress" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="iMISAddress">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="StreetAddress1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StreetAddress2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StreetAddress3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FullAddress" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsPreferredMailing" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfIMISCustomField">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="iMISCustomField" nillable="true" type="tns:iMISCustomField" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="iMISCustomField">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="iMISField" type="tns:iMISField" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="iMISField">
+        <s:restriction base="s:string">
+          <s:enumeration value="Skip" />
+          <s:enumeration value="Occupation" />
+          <s:enumeration value="SendEmailOnlyAssistant" />
+          <s:enumeration value="SendEmailBoth" />
+          <s:enumeration value="AssistantName" />
+          <s:enumeration value="AssistantPhoneNumber" />
+          <s:enumeration value="AssistantEmail" />
+          <s:enumeration value="Interests" />
+          <s:enumeration value="ReceiveEmail" />
+          <s:enumeration value="EmailPreferences" />
+          <s:enumeration value="EventPreferences" />
+          <s:enumeration value="NewsPreferences" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="SaveContactResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveContactResult" type="tns:iMISContact" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthHeader" type="tns:AuthHeader" />
+      <s:complexType name="AuthHeader">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="TokenID" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="SaveBadge">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="objIB" type="tns:iMISBadge" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="iMISBadge">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="BadgeNumber" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="OrderNumber" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="Delegate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Prefix" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InstituteName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StateProvince" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SaveBadgeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SaveBadgeResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveActivity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="objIA" type="tns:iMISActivity" />
+            <s:element minOccurs="0" maxOccurs="1" name="BillToContactID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="iMISActivity">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Quantity" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="ContactID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EventCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ActivityCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TransactionDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="EventDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SaveActivityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SaveActivityResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveComment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="objEC" type="tns:EvoComment" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EvoComment">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="DBStatus" type="tns:DBStatus" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ObjectID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ParentID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Owner" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="iMISContactID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FullName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NickName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comment" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreatedDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="DBStatus">
+        <s:restriction base="s:string">
+          <s:enumeration value="All" />
+          <s:enumeration value="Enable" />
+          <s:enumeration value="Deleted" />
+          <s:enumeration value="Temporary" />
+          <s:enumeration value="Approved" />
+          <s:enumeration value="Pending" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="SaveCommentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SaveCommentResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteBadge">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="objParams" type="tns:p_DeleteBadge" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="p_DeleteBadge">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="BadgeNumber" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="OrderNumber" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DeleteBadgeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteBadgeResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMenuItems">
+        <s:complexType />
+      </s:element>
+      <s:complexType name="EvoMenuItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ParentID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UrlAlias" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Attributes" type="tns:ArrayOfEvoPageAttribute" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEvoPageAttribute">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EvoPageAttribute" nillable="true" type="tns:EvoPageAttribute" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EvoPageAttribute">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="AttributeID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEvoMenuItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EvoMenuItem" nillable="true" type="tns:EvoMenuItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetMenuItemsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMenuItemsResult" type="tns:ArrayOfEvoMenuItem" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPages_x0020_Default">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="objParams" type="tns:p_GetPages" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="p_GetPages">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ObjectType" type="tns:ObjectType" />
+          <s:element minOccurs="1" maxOccurs="1" name="ParentID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CategoryID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Keyword" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Tag" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="OnlyHighlightedItems" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="EnableHierarchicalData" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="SortByPriorityNumber" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IncludeFileUrls" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IncludeComments" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="SkipAttributes" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AllPageTypeButNotEvents" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="StartDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="EndDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Author" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ObjectType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Skip" />
+          <s:enumeration value="Page" />
+          <s:enumeration value="PageFolder" />
+          <s:enumeration value="NewsArticle" />
+          <s:enumeration value="NewsArticleFolder" />
+          <s:enumeration value="Media" />
+          <s:enumeration value="MediaFolder" />
+          <s:enumeration value="User" />
+          <s:enumeration value="UserFolder" />
+          <s:enumeration value="MediaImage" />
+          <s:enumeration value="MediaImageFolder" />
+          <s:enumeration value="MediaAudio" />
+          <s:enumeration value="MediaAudioFolder" />
+          <s:enumeration value="MediaVideo" />
+          <s:enumeration value="MediaVideoFolder" />
+          <s:enumeration value="MediaDocument" />
+          <s:enumeration value="MediaDocumentFolder" />
+          <s:enumeration value="Block" />
+          <s:enumeration value="BlockFolder" />
+          <s:enumeration value="Menu" />
+          <s:enumeration value="MenuFolder" />
+          <s:enumeration value="Announcement" />
+          <s:enumeration value="AnnouncementFolder" />
+          <s:enumeration value="Category" />
+          <s:enumeration value="CategoryFolder" />
+          <s:enumeration value="Blog" />
+          <s:enumeration value="BlogFolder" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="EvoPage">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ObjectType" type="tns:ObjectType" />
+          <s:element minOccurs="1" maxOccurs="1" name="ObjectID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ParentID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Teaser" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UrlAlias" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PublishDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="FileUrls" type="tns:ArrayOfEvoParameter" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comments" type="tns:ArrayOfEvoComment" />
+          <s:element minOccurs="0" maxOccurs="1" name="Attributes" type="tns:ArrayOfEvoPageAttribute" />
+          <s:element minOccurs="1" maxOccurs="1" name="Ranking" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEvoParameter">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EvoParameter" nillable="true" type="tns:EvoParameter" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EvoParameter">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TypeID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Count" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Values" type="tns:ArrayOfString" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEvoComment">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EvoComment" nillable="true" type="tns:EvoComment" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEvoPage">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EvoPage" nillable="true" type="tns:EvoPage" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetPages_x0020_DefaultResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPages_x0020_DefaultResult" type="tns:ArrayOfEvoPage" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPages">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="lRequests" type="tns:ArrayOfEvoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfEvoRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EvoRequest" nillable="true" type="tns:EvoRequest" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EvoRequest">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="GetMenuItems" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Params" type="tns:p_GetPages" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EvoResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Pages" type="tns:ArrayOfEvoPage" />
+          <s:element minOccurs="0" maxOccurs="1" name="MenuItems" type="tns:ArrayOfEvoMenuItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEvoResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EvoResponse" nillable="true" type="tns:EvoResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetPagesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPagesResult" type="tns:ArrayOfEvoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEvents">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="objParams" type="tns:p_GetEvents" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="p_GetEvents">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Topic" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StateProvince" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="StartDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="EndDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="EventCodes" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EventType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="OrderByAscending" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="SkipBlocks" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="iMISEventBase">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="MaxAttendees" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="EventCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Venue" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="StartDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="iMISEvent">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:iMISEventBase">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="HeadCount" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Topic" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="EventType" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="EventAudience" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Notes" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="EventSpeakers" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="HostedBy" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="UrlAlias" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="StateProvince" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="EventCoordinatorID" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="AllowOnlineRegistration" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="EndDate" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="RegularCutoffDate" type="s:dateTime" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfIMISEvent">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="iMISEvent" nillable="true" type="tns:iMISEvent" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetEventsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEventsResult" type="tns:ArrayOfIMISEvent" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRegisteredEvents">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sContactID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfIMISRegisteredEvent">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="iMISRegisteredEvent" nillable="true" type="tns:iMISRegisteredEvent" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="iMISRegisteredEvent">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:iMISEventBase">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="TotalCharges" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="AllRelatedInvoices" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="UrlAlias" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="EventInvoicePath" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Attendee" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="RegistrationCutOffDate" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="OrderNumber" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CoordinatorEmail" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CoordinatorPhone" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="StartTime" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="EndTime" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetRegisteredEventsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRegisteredEventsResult" type="tns:ArrayOfIMISRegisteredEvent" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllRegisteredEvents">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sContactID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllRegisteredEventsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllRegisteredEventsResult" type="tns:ArrayOfIMISRegisteredEvent" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetParameters">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="lParameterTypes" type="tns:ArrayOfParameterType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfParameterType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ParameterType" type="tns:ParameterType" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ParameterType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Interest" />
+          <s:enumeration value="NewsPreference" />
+          <s:enumeration value="EmailPreference" />
+          <s:enumeration value="EventTopic" />
+          <s:enumeration value="Skip" />
+          <s:enumeration value="Template" />
+          <s:enumeration value="FileType" />
+          <s:enumeration value="FilterOperator" />
+          <s:enumeration value="UserRole" />
+          <s:enumeration value="AuthorizationElement" />
+          <s:enumeration value="Permission" />
+          <s:enumeration value="State" />
+          <s:enumeration value="Suffix" />
+          <s:enumeration value="Country" />
+          <s:enumeration value="Occupation" />
+          <s:enumeration value="Prefix" />
+          <s:enumeration value="CashAccount" />
+          <s:enumeration value="NotificationType" />
+          <s:enumeration value="Category" />
+          <s:enumeration value="Institute" />
+          <s:enumeration value="EventType" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetParametersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetParametersResult" type="tns:ArrayOfEvoParameter" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTickets">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="objParams" type="tns:p_GetTickets" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="p_GetTickets">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="EventCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ContactID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EventType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AttendeeID" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="iMISEventRegistrationTicket">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="UnitPriceInCents" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="TaxRate" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProductCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProductMajor" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProductMinor" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NetPrice" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BeginDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="EndDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Sequence" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Price2" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfIMISEventRegistrationTicket">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="iMISEventRegistrationTicket" nillable="true" type="tns:iMISEventRegistrationTicket" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetTicketsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTicketsResult" type="tns:ArrayOfIMISEventRegistrationTicket" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetContact">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sEmail" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetContactResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetContactResult" type="tns:iMISContact" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInstitute">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInstituteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetInstituteResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetContactSubscription">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sContactId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetContactSubscriptionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetContactSubscriptionResult" type="tns:iMISSubscriptionInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPricingDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="objParams" type="tns:p_GetPricingDetails" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="p_GetPricingDetails">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="EventRegistrations" type="tns:ArrayOfIMISEventRegistration" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfIMISEventRegistration">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="iMISEventRegistration" nillable="true" type="tns:iMISEventRegistration" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="iMISEventRegistration">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Note" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Contact" type="tns:iMISContact" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ticket" type="tns:iMISEventRegistrationTicket" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetPricingDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPricingDetailsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInvoice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="objParams" type="tns:p_GetInvoice" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="p_GetInvoice">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="PaymentType" type="tns:PaymentType" />
+          <s:element minOccurs="0" maxOccurs="1" name="BillToContactID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EventCoordinatorID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InvoiceNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReferenceNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreditCardNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CashAccountCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Notes" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="HidePaymentTerms" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="BilledDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="BillBeginDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="LineItems" type="tns:ArrayOfEvoLineItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="PaymentType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Skip" />
+          <s:enumeration value="Cash" />
+          <s:enumeration value="CreditCard" />
+          <s:enumeration value="Check" />
+          <s:enumeration value="PurchaseOrder" />
+          <s:enumeration value="InKind" />
+          <s:enumeration value="Other" />
+          <s:enumeration value="DebitCard" />
+          <s:enumeration value="PurchaseOrderMembership" />
+          <s:enumeration value="PurchaseOrderMembershipNAT" />
+          <s:enumeration value="CreditCardMembership" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfEvoLineItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EvoLineItem" nillable="true" type="tns:EvoLineItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EvoLineItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Quantity" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UnitPrice" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="TaxRate" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProductCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetInvoiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetInvoiceResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetComments">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="iObjectID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCommentsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCommentsResult" type="tns:ArrayOfEvoComment" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBadges">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sOrderNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfIMISBadge">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="iMISBadge" nillable="true" type="tns:iMISBadge" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetBadgesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBadgesResult" type="tns:ArrayOfIMISBadge" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPageDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="objParams" type="tns:p_GetPageDetails" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="p_GetPageDetails">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ObjectID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CurrentPage" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MenuItemID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TemporaryBlockID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="iMISEventCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsUserLoggedIn" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IncludeContents" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="OnlyPublishedVersion" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="EventSearchParameters" type="tns:p_GetEvents" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsMLTPage" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EvoHtml">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ContentType" type="tns:ContentType" />
+          <s:element minOccurs="0" maxOccurs="1" name="Html" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EvoPaging" type="tns:EvoPaging" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ContentType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Skip" />
+          <s:enumeration value="Body" />
+          <s:enumeration value="LeftHandSide" />
+          <s:enumeration value="RightHandSide" />
+          <s:enumeration value="Header" />
+          <s:enumeration value="Footer" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="EvoPaging">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ItemsCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ItemsPerPage" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PageCount" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEvoHtml">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EvoHtml" nillable="true" type="tns:EvoHtml" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetPageDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPageDetailsResult" type="tns:EvoPageDetail" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EvoPageDetail">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EvoPage">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="IsMemberOnly" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="Event" type="tns:iMISEvent" />
+              <s:element minOccurs="0" maxOccurs="1" name="HexColor" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="HtmlCollection" type="tns:ArrayOfEvoHtml" />
+              <s:element minOccurs="0" maxOccurs="1" name="Tags" type="tns:ArrayOfEvoParameter" />
+              <s:element minOccurs="0" maxOccurs="1" name="QuickLaunch" type="tns:ArrayOfEvoMenuItem" />
+              <s:element minOccurs="0" maxOccurs="1" name="BreadcrumbNavigation" type="tns:ArrayOfEvoMenuItem" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetContactDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sContactID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetContactDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetContactDetailsResult" type="tns:iMISContactDetails" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEventDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="objParams" type="tns:p_GetEventDetails" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="p_GetEventDetails">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="EventCode" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetEventDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEventDetailsResult" type="tns:iMISEvent" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckEventRegistrationRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="objParams" type="tns:p_CheckRegistrationRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="p_CheckRegistrationRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="EventCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EventRegistrations" type="tns:ArrayOfIMISEventRegistration" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="iMISMessage">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ProcessResult" type="tns:ProcessResult" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Values" type="tns:ArrayOfString" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ProcessResult">
+        <s:restriction base="s:string">
+          <s:enumeration value="SystemErrorOccured" />
+          <s:enumeration value="Successful" />
+          <s:enumeration value="ConflictOccurredInDatabase" />
+          <s:enumeration value="ContactAlreadyRegistered" />
+          <s:enumeration value="MaximumAttendeesReached" />
+          <s:enumeration value="AuthorizationFailed" />
+          <s:enumeration value="DelayedCaptureFailed" />
+          <s:enumeration value="FailureSendingEmail" />
+          <s:enumeration value="LockedItemsFound" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfIMISMessage">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="iMISMessage" nillable="true" type="tns:iMISMessage" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CheckEventRegistrationRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CheckEventRegistrationRequestResult" type="tns:ArrayOfIMISMessage" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegisterForEvent">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="objParams" type="tns:p_RegisterForEvent" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="p_RegisterForEvent">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="BillToContactID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateActivity" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Event" type="tns:iMISEvent" />
+          <s:element minOccurs="0" maxOccurs="1" name="PaymentDetails" type="tns:iMISPayment" />
+          <s:element minOccurs="0" maxOccurs="1" name="EventRegistrations" type="tns:ArrayOfIMISEventRegistration" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="iMISPayment">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="PaymentType" type="tns:PaymentType" />
+          <s:element minOccurs="0" maxOccurs="1" name="CashAccountCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreditCardNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreditCardExpiration" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CardHoldersName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreditCardSecurityCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PurchaseOrder" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RegisterForEventResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegisterForEventResult" type="tns:iMISMessage" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateOrder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="objParams" type="tns:p_CreateOrder" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="p_CreateOrder">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Quantity" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="BillToContactID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProductCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PaymentDetails" type="tns:iMISPayment" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CreateOrderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateOrderResult" type="tns:iMISMessage" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PaySubscriptionDues">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="objParams" type="tns:p_PaySubscriptionDues" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="p_PaySubscriptionDues">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ContactID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BillToContactID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PaymentDetails" type="tns:iMISPayment" />
+          <s:element minOccurs="0" maxOccurs="1" name="Subscriptions" type="tns:ArrayOfIMISSubscription" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PaySubscriptionDuesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PaySubscriptionDuesResult" type="tns:iMISMessage" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthenticateUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sUserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sPassword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthenticateUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AuthenticateUserResult" type="tns:iMISUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChangePassword">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="objParams" type="tns:p_ChangePassword" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="p_ChangePassword">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NewPassword" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SendEmail" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ChangePasswordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ChangePasswordResult" type="tns:iMISMessage" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ResetPassword">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="objParams" type="tns:p_ResetPassword" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="p_ResetPassword">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ContactID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ResetPasswordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ResetPasswordResult" type="tns:iMISMessage" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GeneratePasswordToken">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GeneratePasswordTokenResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GeneratePasswordTokenResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdatePasswordToken">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdatePasswordTokenResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdatePasswordTokenResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPasswordTokenStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPasswordTokenStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPasswordTokenStatusResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserToken">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserTokenResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserTokenResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ResolveUrlAlias">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sUrlAlias" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="bIsBlock" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ResolveUrlAliasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ResolveUrlAliasResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendInvoice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="objParams" type="tns:p_SendInvoice" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="p_SendInvoice">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MainEventRegistration" type="tns:iMISEventRegistration" />
+          <s:element minOccurs="0" maxOccurs="1" name="AllInvoices" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AddOutlookCalendarAppointment" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Event" type="tns:iMISEvent" />
+          <s:element minOccurs="0" maxOccurs="1" name="Invoice" type="tns:p_GetInvoice" />
+          <s:element minOccurs="0" maxOccurs="1" name="Recipients" type="tns:ArrayOfEvoRecipient" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEvoRecipient">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EvoRecipient" nillable="true" type="tns:EvoRecipient" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EvoRecipient">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="RecipientType" type="tns:RecipientType" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="RecipientType">
+        <s:restriction base="s:string">
+          <s:enumeration value="To" />
+          <s:enumeration value="CC" />
+          <s:enumeration value="Bcc" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="SendInvoiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendInvoiceResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendWelcomeMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="objParams" type="tns:p_SendWelcomeMessage" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="p_SendWelcomeMessage">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RecipientEmails" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReturnUrl" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendWelcomeMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendWelcomeMessageResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckNotifications">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="objParams" type="tns:p_CheckNotifications" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="p_CheckNotifications">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="NotificationType" type="tns:NotificationType" />
+          <s:element minOccurs="1" maxOccurs="1" name="ObjectID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TriggeredBy" type="s1:guid" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="NotificationType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Skip" />
+          <s:enumeration value="Publish" />
+          <s:enumeration value="Delete" />
+          <s:enumeration value="Create" />
+          <s:enumeration value="Update" />
+          <s:enumeration value="BlogComment" />
+          <s:enumeration value="SentToPublish" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="CheckNotificationsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SaveLogText">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="contactId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="logText" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="isAdd" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveLogTextResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="PopulateBreadcrumbNavigation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ObjectID" nillable="true" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PopulateBreadcrumbNavigationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PopulateBreadcrumbNavigationResult" type="tns:ArrayOfEvoMenuItem" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PopulateBreadcrumbNavigationByUrlAlias">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="urlAlias" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PopulateBreadcrumbNavigationByUrlAliasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PopulateBreadcrumbNavigationByUrlAliasResult" type="tns:ArrayOfEvoMenuItem" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RetrievePathToAFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="objOT" type="tns:ObjectType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RetrievePathToAFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RetrievePathToAFileResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RetrieveVirtualPathToAFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="objOT" type="tns:ObjectType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RetrieveVirtualPathToAFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RetrieveVirtualPathToAFileResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUrlAliasDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sUrlAlias" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EvoUrlAlias">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ObjectID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="OriginalValue" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UrlAlias" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetUrlAliasDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUrlAliasDetailsResult" type="tns:EvoUrlAlias" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAspNetUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sEmail" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="MembershipUser">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comment" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsApproved" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastLoginDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastActivityDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAspNetUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAspNetUserResult" type="tns:MembershipUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetObjectDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="objParams" type="tns:p_GetObjectDetails" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="p_GetObjectDetails">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ObjectID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Version" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="OnlyPublishedVersion" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IncludeObjectDetails" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IncludeAttributes" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IncludeTags" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IncludeContents" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IncludeNotifications" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IncludeSecondaryUrlAliases" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="StartDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="EndDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EvoNotification">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IsIncludingChildren" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="GetEnum" type="tns:NotificationType" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ObjectID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="NotificationTypeID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Checked" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EvoContent">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ContentType" type="tns:ContentType" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ObjectID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TemplateID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Html" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Version" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsActive" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PublishedDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="IncreaseMajorVersion" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IncreaseMinorVersion" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Repeaters" type="tns:ArrayOfEvoRepeater" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEvoRepeater">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EvoRepeater" nillable="true" type="tns:EvoRepeater" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EvoRepeater">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ContentID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TemplateID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ObjectID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ItemsPerPage" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="RepeaterName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FilterValues" type="tns:ArrayOfEvoFilterValue" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEvoFilterValue">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EvoFilterValue" nillable="true" type="tns:EvoFilterValue" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EvoFilterValue">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ContentRepeaterID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="FieldID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="FieldTypeID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="FilterOperatorID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Operator" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OperatorDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FieldDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FieldName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EvoObject">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ObjectType" type="tns:ObjectType" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ParentID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PriorityNumber" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Teaser" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UrlAlias" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreatedDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="PublishDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsPublished" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsPublishedButSomeoneIsWorkingOn" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsTemporary" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="File" type="tns:EvoFile" />
+          <s:element minOccurs="0" maxOccurs="1" name="Attributes" type="tns:ArrayOfEvoAttribute" />
+          <s:element minOccurs="0" maxOccurs="1" name="FileUrls" type="tns:ArrayOfEvoParameter" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comments" type="tns:ArrayOfEvoComment" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EvoFile">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ObjectID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FileName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VirtualPath" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Width" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Height" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="s:base64Binary" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEvoAttribute">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EvoAttribute" nillable="true" type="tns:EvoAttribute" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EvoAttribute">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ObjectID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="AttributeID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="AttributeTypeID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EvoObjectDetail">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EvoObject">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="CreatedBy" type="s1:guid" />
+              <s:element minOccurs="1" maxOccurs="1" name="ModifiedBy" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="CreatedByAsUserName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ModifiedByAsUserName" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="ModifiedDate" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="Contents" type="tns:ArrayOfEvoContent" />
+              <s:element minOccurs="0" maxOccurs="1" name="Versions" type="tns:ArrayOfEvoParameter" />
+              <s:element minOccurs="0" maxOccurs="1" name="Tags" type="tns:ArrayOfEvoParameter" />
+              <s:element minOccurs="0" maxOccurs="1" name="Notifications" type="tns:ArrayOfEvoNotification" />
+              <s:element minOccurs="0" maxOccurs="1" name="SecondaryUrlAliases" type="tns:ArrayOfEvoUrlAlias" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfEvoContent">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EvoContent" nillable="true" type="tns:EvoContent" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEvoNotification">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EvoNotification" nillable="true" type="tns:EvoNotification" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEvoUrlAlias">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EvoUrlAlias" nillable="true" type="tns:EvoUrlAlias" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetObjectDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetObjectDetailsResult" type="tns:EvoObjectDetail" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SaveContactSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveContact" />
+  </wsdl:message>
+  <wsdl:message name="SaveContactSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveContactResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveContactAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="SaveBadgeSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveBadge" />
+  </wsdl:message>
+  <wsdl:message name="SaveBadgeSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveBadgeResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveBadgeAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="SaveActivitySoapIn">
+    <wsdl:part name="parameters" element="tns:SaveActivity" />
+  </wsdl:message>
+  <wsdl:message name="SaveActivitySoapOut">
+    <wsdl:part name="parameters" element="tns:SaveActivityResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveActivityAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="SaveCommentSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveComment" />
+  </wsdl:message>
+  <wsdl:message name="SaveCommentSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveCommentResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveCommentAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="DeleteBadgeSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteBadge" />
+  </wsdl:message>
+  <wsdl:message name="DeleteBadgeSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteBadgeResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteBadgeAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetMenuItemsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMenuItems" />
+  </wsdl:message>
+  <wsdl:message name="GetMenuItemsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMenuItemsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMenuItemsAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetPages_x0020_DefaultSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPages_x0020_Default" />
+  </wsdl:message>
+  <wsdl:message name="GetPages_x0020_DefaultSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPages_x0020_DefaultResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPages DefaultAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetPagesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPages" />
+  </wsdl:message>
+  <wsdl:message name="GetPagesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPagesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPagesAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetEventsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEvents" />
+  </wsdl:message>
+  <wsdl:message name="GetEventsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEventsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEventsAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetRegisteredEventsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRegisteredEvents" />
+  </wsdl:message>
+  <wsdl:message name="GetRegisteredEventsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRegisteredEventsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRegisteredEventsAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetAllRegisteredEventsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllRegisteredEvents" />
+  </wsdl:message>
+  <wsdl:message name="GetAllRegisteredEventsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllRegisteredEventsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllRegisteredEventsAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetParametersSoapIn">
+    <wsdl:part name="parameters" element="tns:GetParameters" />
+  </wsdl:message>
+  <wsdl:message name="GetParametersSoapOut">
+    <wsdl:part name="parameters" element="tns:GetParametersResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetParametersAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetTicketsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTickets" />
+  </wsdl:message>
+  <wsdl:message name="GetTicketsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTicketsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTicketsAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetContactSoapIn">
+    <wsdl:part name="parameters" element="tns:GetContact" />
+  </wsdl:message>
+  <wsdl:message name="GetContactSoapOut">
+    <wsdl:part name="parameters" element="tns:GetContactResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetContactAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetInstituteSoapIn">
+    <wsdl:part name="parameters" element="tns:GetInstitute" />
+  </wsdl:message>
+  <wsdl:message name="GetInstituteSoapOut">
+    <wsdl:part name="parameters" element="tns:GetInstituteResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetInstituteAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetContactSubscriptionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetContactSubscription" />
+  </wsdl:message>
+  <wsdl:message name="GetContactSubscriptionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetContactSubscriptionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetContactSubscriptionAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetPricingDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPricingDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetPricingDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPricingDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPricingDetailsAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetInvoiceSoapIn">
+    <wsdl:part name="parameters" element="tns:GetInvoice" />
+  </wsdl:message>
+  <wsdl:message name="GetInvoiceSoapOut">
+    <wsdl:part name="parameters" element="tns:GetInvoiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetInvoiceAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetCommentsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetComments" />
+  </wsdl:message>
+  <wsdl:message name="GetCommentsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCommentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCommentsAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetBadgesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBadges" />
+  </wsdl:message>
+  <wsdl:message name="GetBadgesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBadgesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBadgesAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetPageDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPageDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetPageDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPageDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPageDetailsAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetContactDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetContactDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetContactDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetContactDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetContactDetailsAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetEventDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEventDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetEventDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEventDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEventDetailsAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="CheckEventRegistrationRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckEventRegistrationRequest" />
+  </wsdl:message>
+  <wsdl:message name="CheckEventRegistrationRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckEventRegistrationRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckEventRegistrationRequestAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="RegisterForEventSoapIn">
+    <wsdl:part name="parameters" element="tns:RegisterForEvent" />
+  </wsdl:message>
+  <wsdl:message name="RegisterForEventSoapOut">
+    <wsdl:part name="parameters" element="tns:RegisterForEventResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegisterForEventAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="CreateOrderSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateOrder" />
+  </wsdl:message>
+  <wsdl:message name="CreateOrderSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateOrderAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="PaySubscriptionDuesSoapIn">
+    <wsdl:part name="parameters" element="tns:PaySubscriptionDues" />
+  </wsdl:message>
+  <wsdl:message name="PaySubscriptionDuesSoapOut">
+    <wsdl:part name="parameters" element="tns:PaySubscriptionDuesResponse" />
+  </wsdl:message>
+  <wsdl:message name="PaySubscriptionDuesAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateUserSoapIn">
+    <wsdl:part name="parameters" element="tns:AuthenticateUser" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateUserSoapOut">
+    <wsdl:part name="parameters" element="tns:AuthenticateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateUserAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="ChangePasswordSoapIn">
+    <wsdl:part name="parameters" element="tns:ChangePassword" />
+  </wsdl:message>
+  <wsdl:message name="ChangePasswordSoapOut">
+    <wsdl:part name="parameters" element="tns:ChangePasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChangePasswordAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="ResetPasswordSoapIn">
+    <wsdl:part name="parameters" element="tns:ResetPassword" />
+  </wsdl:message>
+  <wsdl:message name="ResetPasswordSoapOut">
+    <wsdl:part name="parameters" element="tns:ResetPasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="ResetPasswordAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="GeneratePasswordTokenSoapIn">
+    <wsdl:part name="parameters" element="tns:GeneratePasswordToken" />
+  </wsdl:message>
+  <wsdl:message name="GeneratePasswordTokenSoapOut">
+    <wsdl:part name="parameters" element="tns:GeneratePasswordTokenResponse" />
+  </wsdl:message>
+  <wsdl:message name="GeneratePasswordTokenAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePasswordTokenSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdatePasswordToken" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePasswordTokenSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdatePasswordTokenResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePasswordTokenAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetPasswordTokenStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPasswordTokenStatus" />
+  </wsdl:message>
+  <wsdl:message name="GetPasswordTokenStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPasswordTokenStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPasswordTokenStatusAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetUserTokenSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserToken" />
+  </wsdl:message>
+  <wsdl:message name="GetUserTokenSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserTokenResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserTokenAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="ResolveUrlAliasSoapIn">
+    <wsdl:part name="parameters" element="tns:ResolveUrlAlias" />
+  </wsdl:message>
+  <wsdl:message name="ResolveUrlAliasSoapOut">
+    <wsdl:part name="parameters" element="tns:ResolveUrlAliasResponse" />
+  </wsdl:message>
+  <wsdl:message name="ResolveUrlAliasAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="SendInvoiceSoapIn">
+    <wsdl:part name="parameters" element="tns:SendInvoice" />
+  </wsdl:message>
+  <wsdl:message name="SendInvoiceSoapOut">
+    <wsdl:part name="parameters" element="tns:SendInvoiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendInvoiceAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="SendWelcomeMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:SendWelcomeMessage" />
+  </wsdl:message>
+  <wsdl:message name="SendWelcomeMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:SendWelcomeMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendWelcomeMessageAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="CheckNotificationsSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckNotifications" />
+  </wsdl:message>
+  <wsdl:message name="CheckNotificationsSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckNotificationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckNotificationsAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="SaveLogTextSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveLogText" />
+  </wsdl:message>
+  <wsdl:message name="SaveLogTextSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveLogTextResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveLogTextAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="PopulateBreadcrumbNavigationSoapIn">
+    <wsdl:part name="parameters" element="tns:PopulateBreadcrumbNavigation" />
+  </wsdl:message>
+  <wsdl:message name="PopulateBreadcrumbNavigationSoapOut">
+    <wsdl:part name="parameters" element="tns:PopulateBreadcrumbNavigationResponse" />
+  </wsdl:message>
+  <wsdl:message name="PopulateBreadcrumbNavigationAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="PopulateBreadcrumbNavigationByUrlAliasSoapIn">
+    <wsdl:part name="parameters" element="tns:PopulateBreadcrumbNavigationByUrlAlias" />
+  </wsdl:message>
+  <wsdl:message name="PopulateBreadcrumbNavigationByUrlAliasSoapOut">
+    <wsdl:part name="parameters" element="tns:PopulateBreadcrumbNavigationByUrlAliasResponse" />
+  </wsdl:message>
+  <wsdl:message name="PopulateBreadcrumbNavigationByUrlAliasAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="RetrievePathToAFileSoapIn">
+    <wsdl:part name="parameters" element="tns:RetrievePathToAFile" />
+  </wsdl:message>
+  <wsdl:message name="RetrievePathToAFileSoapOut">
+    <wsdl:part name="parameters" element="tns:RetrievePathToAFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="RetrievePathToAFileAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="RetrieveVirtualPathToAFileSoapIn">
+    <wsdl:part name="parameters" element="tns:RetrieveVirtualPathToAFile" />
+  </wsdl:message>
+  <wsdl:message name="RetrieveVirtualPathToAFileSoapOut">
+    <wsdl:part name="parameters" element="tns:RetrieveVirtualPathToAFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="RetrieveVirtualPathToAFileAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetUrlAliasDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUrlAliasDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetUrlAliasDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUrlAliasDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUrlAliasDetailsAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetAspNetUserSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAspNetUser" />
+  </wsdl:message>
+  <wsdl:message name="GetAspNetUserSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAspNetUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAspNetUserAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetObjectDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetObjectDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetObjectDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetObjectDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetObjectDetailsAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:portType name="ClientServiceSoap">
+    <wsdl:operation name="SaveContact">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Saves a contact.</wsdl:documentation>
+      <wsdl:input message="tns:SaveContactSoapIn" />
+      <wsdl:output message="tns:SaveContactSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveBadge">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Saves a badge.</wsdl:documentation>
+      <wsdl:input message="tns:SaveBadgeSoapIn" />
+      <wsdl:output message="tns:SaveBadgeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveActivity">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Saves an activity.</wsdl:documentation>
+      <wsdl:input message="tns:SaveActivitySoapIn" />
+      <wsdl:output message="tns:SaveActivitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveComment">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Saves comment.</wsdl:documentation>
+      <wsdl:input message="tns:SaveCommentSoapIn" />
+      <wsdl:output message="tns:SaveCommentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBadge">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Deletes a badge.</wsdl:documentation>
+      <wsdl:input message="tns:DeleteBadgeSoapIn" />
+      <wsdl:output message="tns:DeleteBadgeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMenuItems">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retreives the menu items.</wsdl:documentation>
+      <wsdl:input message="tns:GetMenuItemsSoapIn" />
+      <wsdl:output message="tns:GetMenuItemsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPages">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retreives pages.</wsdl:documentation>
+      <wsdl:input name="GetPages_x0020_Default" message="tns:GetPages_x0020_DefaultSoapIn" />
+      <wsdl:output name="GetPages_x0020_Default" message="tns:GetPages_x0020_DefaultSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPages">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retreives pages.</wsdl:documentation>
+      <wsdl:input message="tns:GetPagesSoapIn" />
+      <wsdl:output message="tns:GetPagesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEvents">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retreives events.</wsdl:documentation>
+      <wsdl:input message="tns:GetEventsSoapIn" />
+      <wsdl:output message="tns:GetEventsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRegisteredEvents">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retreives the contact's registered events.</wsdl:documentation>
+      <wsdl:input message="tns:GetRegisteredEventsSoapIn" />
+      <wsdl:output message="tns:GetRegisteredEventsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRegisteredEvents">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retreives all the registered events for a contact(MyRegistrations.aspx)</wsdl:documentation>
+      <wsdl:input message="tns:GetAllRegisteredEventsSoapIn" />
+      <wsdl:output message="tns:GetAllRegisteredEventsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetParameters">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retreives the values of the requested parameter types.</wsdl:documentation>
+      <wsdl:input message="tns:GetParametersSoapIn" />
+      <wsdl:output message="tns:GetParametersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTickets">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retreives the event registration tickets.</wsdl:documentation>
+      <wsdl:input message="tns:GetTicketsSoapIn" />
+      <wsdl:output message="tns:GetTicketsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetContact">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retreives the related contact.</wsdl:documentation>
+      <wsdl:input message="tns:GetContactSoapIn" />
+      <wsdl:output message="tns:GetContactSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInstitute">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retreives the related CContact contact.</wsdl:documentation>
+      <wsdl:input message="tns:GetInstituteSoapIn" />
+      <wsdl:output message="tns:GetInstituteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetContactSubscription">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retreives the related contacts subscription info.</wsdl:documentation>
+      <wsdl:input message="tns:GetContactSubscriptionSoapIn" />
+      <wsdl:output message="tns:GetContactSubscriptionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPricingDetails">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retreives the pricing details of the event registration as html.</wsdl:documentation>
+      <wsdl:input message="tns:GetPricingDetailsSoapIn" />
+      <wsdl:output message="tns:GetPricingDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInvoice">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retreives the invoice as byte array.</wsdl:documentation>
+      <wsdl:input message="tns:GetInvoiceSoapIn" />
+      <wsdl:output message="tns:GetInvoiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetComments">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retreives comments.</wsdl:documentation>
+      <wsdl:input message="tns:GetCommentsSoapIn" />
+      <wsdl:output message="tns:GetCommentsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBadges">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retreives badges.</wsdl:documentation>
+      <wsdl:input message="tns:GetBadgesSoapIn" />
+      <wsdl:output message="tns:GetBadgesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPageDetails">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retreives the page details.</wsdl:documentation>
+      <wsdl:input message="tns:GetPageDetailsSoapIn" />
+      <wsdl:output message="tns:GetPageDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetContactDetails">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retreives the contact details.</wsdl:documentation>
+      <wsdl:input message="tns:GetContactDetailsSoapIn" />
+      <wsdl:output message="tns:GetContactDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEventDetails">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retreives the event details.</wsdl:documentation>
+      <wsdl:input message="tns:GetEventDetailsSoapIn" />
+      <wsdl:output message="tns:GetEventDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckEventRegistrationRequest">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Checks the event registration request for errors.</wsdl:documentation>
+      <wsdl:input message="tns:CheckEventRegistrationRequestSoapIn" />
+      <wsdl:output message="tns:CheckEventRegistrationRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegisterForEvent">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Creates a new iMIS event registration.</wsdl:documentation>
+      <wsdl:input message="tns:RegisterForEventSoapIn" />
+      <wsdl:output message="tns:RegisterForEventSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrder">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Creates a new iMIS order.</wsdl:documentation>
+      <wsdl:input message="tns:CreateOrderSoapIn" />
+      <wsdl:output message="tns:CreateOrderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PaySubscriptionDues">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Renews the contact's subscriptions.</wsdl:documentation>
+      <wsdl:input message="tns:PaySubscriptionDuesSoapIn" />
+      <wsdl:output message="tns:PaySubscriptionDuesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateUser">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retreives the authenticated user information.</wsdl:documentation>
+      <wsdl:input message="tns:AuthenticateUserSoapIn" />
+      <wsdl:output message="tns:AuthenticateUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangePassword">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Changes the user's password.</wsdl:documentation>
+      <wsdl:input message="tns:ChangePasswordSoapIn" />
+      <wsdl:output message="tns:ChangePasswordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ResetPassword">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Resets the user's password.</wsdl:documentation>
+      <wsdl:input message="tns:ResetPasswordSoapIn" />
+      <wsdl:output message="tns:ResetPasswordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GeneratePasswordToken">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Generates and saves password token in CEDA_PasswordToken table</wsdl:documentation>
+      <wsdl:input message="tns:GeneratePasswordTokenSoapIn" />
+      <wsdl:output message="tns:GeneratePasswordTokenSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePasswordToken">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Updates the password token after reset CEDA_PasswordToken table</wsdl:documentation>
+      <wsdl:input message="tns:UpdatePasswordTokenSoapIn" />
+      <wsdl:output message="tns:UpdatePasswordTokenSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPasswordTokenStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Checks if the user token needs password reset</wsdl:documentation>
+      <wsdl:input message="tns:GetPasswordTokenStatusSoapIn" />
+      <wsdl:output message="tns:GetPasswordTokenStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserToken">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get User Token</wsdl:documentation>
+      <wsdl:input message="tns:GetUserTokenSoapIn" />
+      <wsdl:output message="tns:GetUserTokenSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ResolveUrlAlias">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retreives the original value of the url alias.</wsdl:documentation>
+      <wsdl:input message="tns:ResolveUrlAliasSoapIn" />
+      <wsdl:output message="tns:ResolveUrlAliasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendInvoice">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Creates an invoice and executes the emailing process.</wsdl:documentation>
+      <wsdl:input message="tns:SendInvoiceSoapIn" />
+      <wsdl:output message="tns:SendInvoiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendWelcomeMessage">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sends a welcome message to contact.</wsdl:documentation>
+      <wsdl:input message="tns:SendWelcomeMessageSoapIn" />
+      <wsdl:output message="tns:SendWelcomeMessageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckNotifications">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Checks the email notifications.</wsdl:documentation>
+      <wsdl:input message="tns:CheckNotificationsSoapIn" />
+      <wsdl:output message="tns:CheckNotificationsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveLogText">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Save detailed information related to modifications of a contact(a record in the Name table).</wsdl:documentation>
+      <wsdl:input message="tns:SaveLogTextSoapIn" />
+      <wsdl:output message="tns:SaveLogTextSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PopulateBreadcrumbNavigation">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieve the breadcrumb.</wsdl:documentation>
+      <wsdl:input message="tns:PopulateBreadcrumbNavigationSoapIn" />
+      <wsdl:output message="tns:PopulateBreadcrumbNavigationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PopulateBreadcrumbNavigation">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieve the breadcrumb by its url alias.</wsdl:documentation>
+      <wsdl:input name="PopulateBreadcrumbNavigationByUrlAlias" message="tns:PopulateBreadcrumbNavigationByUrlAliasSoapIn" />
+      <wsdl:output name="PopulateBreadcrumbNavigationByUrlAlias" message="tns:PopulateBreadcrumbNavigationByUrlAliasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPath">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieve path to a file</wsdl:documentation>
+      <wsdl:input name="RetrievePathToAFile" message="tns:RetrievePathToAFileSoapIn" />
+      <wsdl:output name="RetrievePathToAFile" message="tns:RetrievePathToAFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVirtualPath">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieve virtual path to a file</wsdl:documentation>
+      <wsdl:input name="RetrieveVirtualPathToAFile" message="tns:RetrieveVirtualPathToAFileSoapIn" />
+      <wsdl:output name="RetrieveVirtualPathToAFile" message="tns:RetrieveVirtualPathToAFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUrlAliasDetails">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retreives the url alias details.</wsdl:documentation>
+      <wsdl:input message="tns:GetUrlAliasDetailsSoapIn" />
+      <wsdl:output message="tns:GetUrlAliasDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAspNetUser">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retreives the authenticated user information.</wsdl:documentation>
+      <wsdl:input message="tns:GetAspNetUserSoapIn" />
+      <wsdl:output message="tns:GetAspNetUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetObjectDetails">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retreives the object details.</wsdl:documentation>
+      <wsdl:input message="tns:GetObjectDetailsSoapIn" />
+      <wsdl:output message="tns:GetObjectDetailsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ClientServiceSoap" type="tns:ClientServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SaveContact">
+      <soap:operation soapAction="http://tempuri.org/SaveContact" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SaveContactAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:SaveContactAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveBadge">
+      <soap:operation soapAction="http://tempuri.org/SaveBadge" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SaveBadgeAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:SaveBadgeAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveActivity">
+      <soap:operation soapAction="http://tempuri.org/SaveActivity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SaveActivityAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:SaveActivityAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveComment">
+      <soap:operation soapAction="http://tempuri.org/SaveComment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SaveCommentAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:SaveCommentAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBadge">
+      <soap:operation soapAction="http://tempuri.org/DeleteBadge" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DeleteBadgeAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:DeleteBadgeAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMenuItems">
+      <soap:operation soapAction="http://tempuri.org/GetMenuItems" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetMenuItemsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetMenuItemsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPages">
+      <soap:operation soapAction="http://tempuri.org/GetPages Default" style="document" />
+      <wsdl:input name="GetPages_x0020_Default">
+        <soap:body use="literal" />
+        <soap:header message="tns:GetPages DefaultAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetPages_x0020_Default">
+        <soap:body use="literal" />
+        <soap:header message="tns:GetPages DefaultAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPages">
+      <soap:operation soapAction="http://tempuri.org/GetPages" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetPagesAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetPagesAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEvents">
+      <soap:operation soapAction="http://tempuri.org/GetEvents" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetEventsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetEventsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRegisteredEvents">
+      <soap:operation soapAction="http://tempuri.org/GetRegisteredEvents" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetRegisteredEventsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetRegisteredEventsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRegisteredEvents">
+      <soap:operation soapAction="http://tempuri.org/GetAllRegisteredEvents" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetAllRegisteredEventsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetAllRegisteredEventsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetParameters">
+      <soap:operation soapAction="http://tempuri.org/GetParameters" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetParametersAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetParametersAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTickets">
+      <soap:operation soapAction="http://tempuri.org/GetTickets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetTicketsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetTicketsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContact">
+      <soap:operation soapAction="http://tempuri.org/GetContact" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetContactAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetContactAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInstitute">
+      <soap:operation soapAction="http://tempuri.org/GetInstitute" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetInstituteAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetInstituteAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContactSubscription">
+      <soap:operation soapAction="http://tempuri.org/GetContactSubscription" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetContactSubscriptionAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetContactSubscriptionAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPricingDetails">
+      <soap:operation soapAction="http://tempuri.org/GetPricingDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetPricingDetailsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetPricingDetailsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInvoice">
+      <soap:operation soapAction="http://tempuri.org/GetInvoice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetInvoiceAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetInvoiceAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetComments">
+      <soap:operation soapAction="http://tempuri.org/GetComments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetCommentsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetCommentsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBadges">
+      <soap:operation soapAction="http://tempuri.org/GetBadges" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetBadgesAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetBadgesAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPageDetails">
+      <soap:operation soapAction="http://tempuri.org/GetPageDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetPageDetailsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetPageDetailsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContactDetails">
+      <soap:operation soapAction="http://tempuri.org/GetContactDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetContactDetailsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetContactDetailsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventDetails">
+      <soap:operation soapAction="http://tempuri.org/GetEventDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetEventDetailsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetEventDetailsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckEventRegistrationRequest">
+      <soap:operation soapAction="http://tempuri.org/CheckEventRegistrationRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:CheckEventRegistrationRequestAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:CheckEventRegistrationRequestAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterForEvent">
+      <soap:operation soapAction="http://tempuri.org/RegisterForEvent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:RegisterForEventAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:RegisterForEventAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrder">
+      <soap:operation soapAction="http://tempuri.org/CreateOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:CreateOrderAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:CreateOrderAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PaySubscriptionDues">
+      <soap:operation soapAction="http://tempuri.org/PaySubscriptionDues" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:PaySubscriptionDuesAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:PaySubscriptionDuesAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateUser">
+      <soap:operation soapAction="http://tempuri.org/AuthenticateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AuthenticateUserAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:AuthenticateUserAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangePassword">
+      <soap:operation soapAction="http://tempuri.org/ChangePassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ChangePasswordAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:ChangePasswordAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResetPassword">
+      <soap:operation soapAction="http://tempuri.org/ResetPassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ResetPasswordAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:ResetPasswordAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GeneratePasswordToken">
+      <soap:operation soapAction="http://tempuri.org/GeneratePasswordToken" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GeneratePasswordTokenAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:GeneratePasswordTokenAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePasswordToken">
+      <soap:operation soapAction="http://tempuri.org/UpdatePasswordToken" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:UpdatePasswordTokenAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:UpdatePasswordTokenAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPasswordTokenStatus">
+      <soap:operation soapAction="http://tempuri.org/GetPasswordTokenStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetPasswordTokenStatusAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetPasswordTokenStatusAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserToken">
+      <soap:operation soapAction="http://tempuri.org/GetUserToken" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetUserTokenAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetUserTokenAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResolveUrlAlias">
+      <soap:operation soapAction="http://tempuri.org/ResolveUrlAlias" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ResolveUrlAliasAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:ResolveUrlAliasAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendInvoice">
+      <soap:operation soapAction="http://tempuri.org/SendInvoice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SendInvoiceAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:SendInvoiceAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendWelcomeMessage">
+      <soap:operation soapAction="http://tempuri.org/SendWelcomeMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SendWelcomeMessageAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:SendWelcomeMessageAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckNotifications">
+      <soap:operation soapAction="http://tempuri.org/CheckNotifications" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:CheckNotificationsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:CheckNotificationsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveLogText">
+      <soap:operation soapAction="http://tempuri.org/SaveLogText" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SaveLogTextAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:SaveLogTextAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PopulateBreadcrumbNavigation">
+      <soap:operation soapAction="http://tempuri.org/PopulateBreadcrumbNavigation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:PopulateBreadcrumbNavigationAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:PopulateBreadcrumbNavigationAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PopulateBreadcrumbNavigation">
+      <soap:operation soapAction="http://tempuri.org/PopulateBreadcrumbNavigationByUrlAlias" style="document" />
+      <wsdl:input name="PopulateBreadcrumbNavigationByUrlAlias">
+        <soap:body use="literal" />
+        <soap:header message="tns:PopulateBreadcrumbNavigationByUrlAliasAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="PopulateBreadcrumbNavigationByUrlAlias">
+        <soap:body use="literal" />
+        <soap:header message="tns:PopulateBreadcrumbNavigationByUrlAliasAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPath">
+      <soap:operation soapAction="http://tempuri.org/RetrievePathToAFile" style="document" />
+      <wsdl:input name="RetrievePathToAFile">
+        <soap:body use="literal" />
+        <soap:header message="tns:RetrievePathToAFileAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="RetrievePathToAFile">
+        <soap:body use="literal" />
+        <soap:header message="tns:RetrievePathToAFileAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVirtualPath">
+      <soap:operation soapAction="http://tempuri.org/RetrieveVirtualPathToAFile" style="document" />
+      <wsdl:input name="RetrieveVirtualPathToAFile">
+        <soap:body use="literal" />
+        <soap:header message="tns:RetrieveVirtualPathToAFileAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="RetrieveVirtualPathToAFile">
+        <soap:body use="literal" />
+        <soap:header message="tns:RetrieveVirtualPathToAFileAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUrlAliasDetails">
+      <soap:operation soapAction="http://tempuri.org/GetUrlAliasDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetUrlAliasDetailsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetUrlAliasDetailsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAspNetUser">
+      <soap:operation soapAction="http://tempuri.org/GetAspNetUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetAspNetUserAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetAspNetUserAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetObjectDetails">
+      <soap:operation soapAction="http://tempuri.org/GetObjectDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetObjectDetailsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetObjectDetailsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ClientServiceSoap12" type="tns:ClientServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SaveContact">
+      <soap12:operation soapAction="http://tempuri.org/SaveContact" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SaveContactAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SaveContactAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveBadge">
+      <soap12:operation soapAction="http://tempuri.org/SaveBadge" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SaveBadgeAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SaveBadgeAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveActivity">
+      <soap12:operation soapAction="http://tempuri.org/SaveActivity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SaveActivityAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SaveActivityAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveComment">
+      <soap12:operation soapAction="http://tempuri.org/SaveComment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SaveCommentAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SaveCommentAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBadge">
+      <soap12:operation soapAction="http://tempuri.org/DeleteBadge" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DeleteBadgeAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DeleteBadgeAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMenuItems">
+      <soap12:operation soapAction="http://tempuri.org/GetMenuItems" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetMenuItemsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetMenuItemsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPages">
+      <soap12:operation soapAction="http://tempuri.org/GetPages Default" style="document" />
+      <wsdl:input name="GetPages_x0020_Default">
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetPages DefaultAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetPages_x0020_Default">
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetPages DefaultAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPages">
+      <soap12:operation soapAction="http://tempuri.org/GetPages" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetPagesAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetPagesAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEvents">
+      <soap12:operation soapAction="http://tempuri.org/GetEvents" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetEventsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetEventsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRegisteredEvents">
+      <soap12:operation soapAction="http://tempuri.org/GetRegisteredEvents" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetRegisteredEventsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetRegisteredEventsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRegisteredEvents">
+      <soap12:operation soapAction="http://tempuri.org/GetAllRegisteredEvents" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetAllRegisteredEventsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetAllRegisteredEventsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetParameters">
+      <soap12:operation soapAction="http://tempuri.org/GetParameters" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetParametersAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetParametersAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTickets">
+      <soap12:operation soapAction="http://tempuri.org/GetTickets" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetTicketsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetTicketsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContact">
+      <soap12:operation soapAction="http://tempuri.org/GetContact" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetContactAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetContactAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInstitute">
+      <soap12:operation soapAction="http://tempuri.org/GetInstitute" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetInstituteAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetInstituteAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContactSubscription">
+      <soap12:operation soapAction="http://tempuri.org/GetContactSubscription" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetContactSubscriptionAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetContactSubscriptionAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPricingDetails">
+      <soap12:operation soapAction="http://tempuri.org/GetPricingDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetPricingDetailsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetPricingDetailsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInvoice">
+      <soap12:operation soapAction="http://tempuri.org/GetInvoice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetInvoiceAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetInvoiceAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetComments">
+      <soap12:operation soapAction="http://tempuri.org/GetComments" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetCommentsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetCommentsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBadges">
+      <soap12:operation soapAction="http://tempuri.org/GetBadges" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetBadgesAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetBadgesAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPageDetails">
+      <soap12:operation soapAction="http://tempuri.org/GetPageDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetPageDetailsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetPageDetailsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContactDetails">
+      <soap12:operation soapAction="http://tempuri.org/GetContactDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetContactDetailsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetContactDetailsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventDetails">
+      <soap12:operation soapAction="http://tempuri.org/GetEventDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetEventDetailsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetEventDetailsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckEventRegistrationRequest">
+      <soap12:operation soapAction="http://tempuri.org/CheckEventRegistrationRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:CheckEventRegistrationRequestAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:CheckEventRegistrationRequestAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterForEvent">
+      <soap12:operation soapAction="http://tempuri.org/RegisterForEvent" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:RegisterForEventAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:RegisterForEventAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrder">
+      <soap12:operation soapAction="http://tempuri.org/CreateOrder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:CreateOrderAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:CreateOrderAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PaySubscriptionDues">
+      <soap12:operation soapAction="http://tempuri.org/PaySubscriptionDues" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:PaySubscriptionDuesAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:PaySubscriptionDuesAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateUser">
+      <soap12:operation soapAction="http://tempuri.org/AuthenticateUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:AuthenticateUserAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:AuthenticateUserAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangePassword">
+      <soap12:operation soapAction="http://tempuri.org/ChangePassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ChangePasswordAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ChangePasswordAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResetPassword">
+      <soap12:operation soapAction="http://tempuri.org/ResetPassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ResetPasswordAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ResetPasswordAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GeneratePasswordToken">
+      <soap12:operation soapAction="http://tempuri.org/GeneratePasswordToken" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GeneratePasswordTokenAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GeneratePasswordTokenAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePasswordToken">
+      <soap12:operation soapAction="http://tempuri.org/UpdatePasswordToken" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:UpdatePasswordTokenAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:UpdatePasswordTokenAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPasswordTokenStatus">
+      <soap12:operation soapAction="http://tempuri.org/GetPasswordTokenStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetPasswordTokenStatusAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetPasswordTokenStatusAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserToken">
+      <soap12:operation soapAction="http://tempuri.org/GetUserToken" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetUserTokenAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetUserTokenAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResolveUrlAlias">
+      <soap12:operation soapAction="http://tempuri.org/ResolveUrlAlias" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ResolveUrlAliasAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ResolveUrlAliasAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendInvoice">
+      <soap12:operation soapAction="http://tempuri.org/SendInvoice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SendInvoiceAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SendInvoiceAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendWelcomeMessage">
+      <soap12:operation soapAction="http://tempuri.org/SendWelcomeMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SendWelcomeMessageAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SendWelcomeMessageAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckNotifications">
+      <soap12:operation soapAction="http://tempuri.org/CheckNotifications" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:CheckNotificationsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:CheckNotificationsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveLogText">
+      <soap12:operation soapAction="http://tempuri.org/SaveLogText" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SaveLogTextAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SaveLogTextAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PopulateBreadcrumbNavigation">
+      <soap12:operation soapAction="http://tempuri.org/PopulateBreadcrumbNavigation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:PopulateBreadcrumbNavigationAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:PopulateBreadcrumbNavigationAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PopulateBreadcrumbNavigation">
+      <soap12:operation soapAction="http://tempuri.org/PopulateBreadcrumbNavigationByUrlAlias" style="document" />
+      <wsdl:input name="PopulateBreadcrumbNavigationByUrlAlias">
+        <soap12:body use="literal" />
+        <soap12:header message="tns:PopulateBreadcrumbNavigationByUrlAliasAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="PopulateBreadcrumbNavigationByUrlAlias">
+        <soap12:body use="literal" />
+        <soap12:header message="tns:PopulateBreadcrumbNavigationByUrlAliasAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPath">
+      <soap12:operation soapAction="http://tempuri.org/RetrievePathToAFile" style="document" />
+      <wsdl:input name="RetrievePathToAFile">
+        <soap12:body use="literal" />
+        <soap12:header message="tns:RetrievePathToAFileAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="RetrievePathToAFile">
+        <soap12:body use="literal" />
+        <soap12:header message="tns:RetrievePathToAFileAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVirtualPath">
+      <soap12:operation soapAction="http://tempuri.org/RetrieveVirtualPathToAFile" style="document" />
+      <wsdl:input name="RetrieveVirtualPathToAFile">
+        <soap12:body use="literal" />
+        <soap12:header message="tns:RetrieveVirtualPathToAFileAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="RetrieveVirtualPathToAFile">
+        <soap12:body use="literal" />
+        <soap12:header message="tns:RetrieveVirtualPathToAFileAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUrlAliasDetails">
+      <soap12:operation soapAction="http://tempuri.org/GetUrlAliasDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetUrlAliasDetailsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetUrlAliasDetailsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAspNetUser">
+      <soap12:operation soapAction="http://tempuri.org/GetAspNetUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetAspNetUserAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetAspNetUserAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetObjectDetails">
+      <soap12:operation soapAction="http://tempuri.org/GetObjectDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetObjectDetailsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetObjectDetailsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ClientService">
+    <wsdl:port name="ClientServiceSoap" binding="tns:ClientServiceSoap">
+      <soap:address location="http://adminpanel.ceda.com.au/WebService/ClientService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ClientServiceSoap12" binding="tns:ClientServiceSoap12">
+      <soap12:address location="http://adminpanel.ceda.com.au/WebService/ClientService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

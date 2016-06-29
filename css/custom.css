@@ -1,0 +1,142 @@
+﻿html, body {
+    height: 100%
+}
+
+body {
+    background-color: #2F526B;
+    font-size: 16px;  
+}
+
+body.container {
+    margin-top: 4%;   
+}
+
+div#div_BadgesAndAttendeesContainer.well-sm {
+
+}
+
+.btn {
+
+	background: transparent;
+	color: black;
+
+	/* CSS Transition */
+	-webkit-transition: background .2s ease-in-out, border .2s ease-in-out;
+	-moz-transition: background .2s ease-in-out, border .2s ease-in-out;
+	-ms-transition: background .2s ease-in-out, border .2s ease-in-out;
+	-o-transition: background .2s ease-in-out, border .2s ease-in-out;
+	transition: background .2s ease-in-out, border .2s ease-in-out;
+
+}
+
+/* div#div_Attendee */
+div#div_Attendee {
+    width: 500px;
+}
+    
+div#div_RegisteredEvents {
+   margin-left: -8px;
+}
+
+div.form-horizontal {
+    width: 900px;
+}
+
+.form-inline .form-control {
+    width: 100%!important;
+    display: block;
+    height: 46px;
+}
+
+.form-horizontal .control-label {
+    text-align: left;
+}
+
+.btn .btn-primary {
+    width: 40%;
+}
+
+.text-center {
+    margin-top: 2%;
+}
+
+#BTN_SaveContact {
+
+}
+
+#txt_contactid {
+    height: 46px;
+}
+
+/* dynamic dropdowns */
+div#div_Institutes div.chosen-container, select#DDL_Institutes div a.chosen-single {
+    width: 100%!important;
+}
+
+div#txt_contactid_chosen, div#DDL_Prefix_chosen, div#DDL_States_chosen, div#DDL_EventCodes_chosen {
+    width: 100%!important;
+}
+
+div#txt_events_chosen {
+    width: 100%!important;
+}
+
+input.updateTableInput {
+    width: 45px;
+    background: #939A9A;
+    border: none;
+    text-align: center;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: bold;
+}
+
+input.updateTableButton {
+    font-size: 14px;
+}
+
+.btn-sm {
+    font-size: 10px!important;
+    text-transform: uppercase;
+}
+
+.nav-tabs>li.active>a {
+    background-color: #2F526B!important;
+    color: #fff!important;
+}
+
+h1#CorpTablesHeader {
+    color: #666666;
+    text-align: center;
+    font-family: Calibri, Arial, sans-serif;
+}
+
+/* dynamic search highlight color */
+mark {
+    background-color: #E4FF00!important; 
+}
+
+/* Report links 
+a#HL_EventRegistrations, a#HL_NameBadges {
+    font-family: calibri!important;
+    text-transform: capitalize!important;
+    font-size: 20px!important;
+    color: #2F526B!important;
+}*/
+
+div#ctl09 {
+    margin-left: 14px;
+}
+
+input#btn_exportToWord {
+    /*font-weight: bold;
+    color: white;
+    background-color: #449d44;*/
+}
+
+a.dxeHyperlink {
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    font-family: Consolas;
+}
